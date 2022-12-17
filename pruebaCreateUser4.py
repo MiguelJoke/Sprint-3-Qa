@@ -16,6 +16,15 @@ driver.get("https://deliverind.com.ar")
 driver.maximize_window()
 time.sleep(2)
 
+requirement = ()     #Expected Result
+labelObtained = ()      #Actual Result
+
+def compareLabels():
+    if requirement in labelObtained:
+        print("Pass")
+    else:
+        print("Fail")
+
 linkAccountIcon = driver.find_element(By.XPATH, "/html/body/header/nav/div[4]/div[3]/div[1]/span[2]/i")
 
 time.sleep(4)
@@ -44,7 +53,7 @@ campoContraseña.click()
 
 time.sleep(2)
 
-campoContraseña.send_keys("123contraseña85")
+campoContraseña.send_keys("123contra85")
 
 time.sleep(2)
 
@@ -55,5 +64,33 @@ time.sleep(2)
 buttonAcceder.click()
 
 time.sleep(4)
+
+linkProducto = driver.find_element(By.XPATH, "/html/body/div[1]/div/div/div/section[1]/div/div/div/div/div/div[2]/div/div/a/img")
+
+time.sleep(2)
+
+linkProducto.click()
+
+time.sleep(3)
+
+buttonFinal = driver.find_element(By.XPATH,"/html/body/header/nav/div[4]/div[3]/div[1]/a")
+
+time.sleep(2)
+
+buttonFinal.click()
+
+time.sleep(3)
+
+mensajeError = driver.find_element(By.XPATH, "/html/body/div[1]/div/div/div/div/div/div/p[1]").text
+
+labelObtained = mensajeError
+
+print(mensajeError)
+
+requirement = 'Hola letojav138 (¿no eres letojav138? Cerrar sesión)'
+
+compareLabels()
+
+time.sleep(2)
 
 driver.close()
